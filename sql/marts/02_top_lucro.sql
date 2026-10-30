@@ -1,7 +1,10 @@
 -- Quais filmes deram mais lucro?
 -- Grão: um filme, os 10 de maior lucro.
 -- lucro = receita - orçamento, em dólares da época (sem correção de inflação).
--- Mesmo filtro do mart 01: lançado, orçamento e receita de pelo menos US$ 1 mi.
+-- Mesmo filtro de dinheiro do mart 01: lançado, orçamento e receita de pelo
+-- menos US$ 1 mi. A data não é exigida, ao contrário do mart 01: o ranking não
+-- agrupa por ano, e um filme sem data continua sendo um filme lucrativo
+-- (hoje nenhum filme que passa no filtro está sem data).
 -- filme_id desempata lucros iguais: sem ele, a ordem pode mudar entre execuções.
 SELECT
     row_number() OVER (ORDER BY receita - orcamento DESC, filme_id) AS posicao,
